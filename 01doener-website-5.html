@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01Döner Mönchengladbach | Döner, Dürüm & mehr</title>
+  <meta name="description" content="01Döner in Mönchengladbach – Döner, Dürüm, Lahmacun, Falafel, Burger, Pommes und Salate. Aachener Straße 297. Jetzt bestellen: 0155 65 57 98 98.">
+  <meta name="theme-color" content="#080808">
+  <style>
+    :root{--bg:#070707;--bg2:#101010;--card:#171717;--red:#e50914;--red2:#ff1b25;--text:#fff;--muted:#b8b8b8;--line:#2a2a2a}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .container{width:min(1180px,92%);margin:auto}
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(7,7,7,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .logo{font-size:28px;font-weight:1000;letter-spacing:-1.5px}.logo span{color:var(--red)}
+    .navlinks{display:flex;gap:28px;list-style:none;font-weight:700}.navlinks a:hover{color:var(--red)}
+    .actions{display:flex;align-items:center;gap:10px}
+    .btn{display:inline-block;background:var(--red);border:1px solid var(--red);color:#fff;padding:12px 18px;border-radius:8px;font-weight:900;cursor:pointer;transition:.2s}
+    .btn:hover{background:var(--red2);transform:translateY(-2px)}
+    .btn.ghost{background:transparent;border-color:#444}
+    .cart{background:#171717;border:1px solid #333;color:#fff;border-radius:8px;padding:11px 14px;cursor:pointer}
+    .count{background:var(--red);border-radius:20px;padding:2px 7px;margin-left:4px;font-size:12px}
+    .toggle{display:none;background:none;border:0;color:#fff;font-size:28px}
+    .hero{min-height:760px;padding-top:76px;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 82% 48%,rgba(229,9,20,.28),transparent 34%),linear-gradient(110deg,#050505,#151515)}
+    .hero:after{content:"";position:absolute;width:600px;height:600px;right:-250px;top:130px;border-radius:50%;background:rgba(229,9,20,.13);filter:blur(35px)}
+    .hero-content{position:relative;z-index:2;max-width:700px}
+    .badge{display:inline-block;padding:7px 13px;border:1px solid rgba(229,9,20,.5);background:rgba(229,9,20,.12);border-radius:30px;font-size:13px;font-weight:900;margin-bottom:20px}
+    h1{font-size:clamp(55px,9vw,105px);line-height:.88;letter-spacing:-5px;margin-bottom:25px} h1 span{color:var(--red)}
+    .hero p{color:var(--muted);font-size:19px;max-width:600px;margin-bottom:28px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    section{padding:90px 0}.dark{background:#0d0d0d}
+    .title{text-align:center;margin-bottom:45px}.title small{color:var(--red);font-weight:900;letter-spacing:2px;text-transform:uppercase}.title h2{font-size:clamp(36px,5vw,58px);line-height:1;margin:9px 0}.title p{color:var(--muted)}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.feature,.info,.review{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:28px}.feature-icon{font-size:35px;margin-bottom:10px}.feature p,.info p,.review p{color:var(--muted)}
+    .categories{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:32px}.cat{background:#151515;border:1px solid #333;color:#fff;padding:10px 17px;border-radius:30px;cursor:pointer;font-weight:800}.cat.active,.cat:hover{background:var(--red);border-color:var(--red)}
+    .menu{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.item{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:21px;display:flex;flex-direction:column;min-height:210px;transition:.2s}.item:hover{transform:translateY(-4px);border-color:#6b2025}.item-top{display:flex;justify-content:space-between;gap:12px}.item h3{font-size:20px}.price{font-weight:1000;font-size:19px;white-space:nowrap;color:#fff}.item p{color:var(--muted);font-size:14px;margin:7px 0 18px;flex:1}.item .btn{align-self:flex-start;padding:10px 14px}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}.about-art{min-height:420px;border-radius:20px;background:radial-gradient(circle,#7a151b,#111 62%);display:grid;place-items:center;font-size:145px;box-shadow:0 20px 60px #000}.about small{color:var(--red);font-weight:900;letter-spacing:2px}.about h2{font-size:52px;line-height:.95;margin:10px 0 20px}.about p{color:var(--muted);margin-bottom:14px}
+    .info-grid,.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.info h3{margin-bottom:14px}.hours div{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);color:var(--muted)}.hours div:last-child{border-bottom:0}
+    .stars{color:#ffd21f;letter-spacing:3px;margin-bottom:10px}
+    .cta{text-align:center;background:radial-gradient(circle,rgba(229,9,20,.25),transparent 60%),#090909}.cta h2{font-size:clamp(42px,6vw,72px);line-height:.95;margin-bottom:16px}.cta h2 span{color:var(--red)}.cta p{color:var(--muted);margin-bottom:25px}
+    footer{padding:50px 0 25px;border-top:1px solid var(--line);background:#040404}.footergrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}.footergrid p,.footergrid a{color:var(--muted)}.footergrid a:hover{color:var(--red)}.bottom{border-top:1px solid var(--line);margin-top:35px;padding-top:20px;color:#777;font-size:13px;display:flex;justify-content:space-between}
+    .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:2000}.overlay.open{display:block}.drawer{position:absolute;right:0;top:0;height:100%;width:min(430px,100%);background:#101010;border-left:1px solid #333;padding:25px;overflow:auto}.carthead{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.close{background:none;border:0;color:#fff;font-size:30px;cursor:pointer}.cartitem{padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:15px}.cartitem small{color:var(--muted)}.remove{background:none;border:0;color:#ff5b62;cursor:pointer}.total{display:flex;justify-content:space-between;font-size:22px;font-weight:1000;margin:24px 0}.full{width:100%}
+    @media(max-width:850px){.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:#090909;padding:20px;flex-direction:column}.navlinks.open{display:flex}.toggle{display:block}.actions .btn{display:none}.features,.menu,.info-grid,.reviews{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr}.footergrid{grid-template-columns:1fr 1fr}}
+    @media(max-width:560px){.nav{height:68px}.hero{padding-top:68px;min-height:650px}section{padding:65px 0}.features,.menu,.info-grid,.reviews,.footergrid{grid-template-columns:1fr}.about-art{min-height:300px;font-size:110px}.about h2{font-size:42px}.bottom{flex-direction:column}.navlinks{top:68px}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">01<span>Döner</span></a>
+    <button class="toggle" id="toggle" aria-label="Menü">☰</button>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#home">Start</a></li>
+      <li><a href="#speisekarte">Speisekarte</a></li>
+      <li><a href="#ueber-uns">Über uns</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <div class="actions">
+      <button class="cart" id="openCart">🛒 <span class="count" id="count">0</span></button>
+      <a class="btn" href="#speisekarte">Jetzt bestellen</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="badge">🔥 01DÖNER • MÖNCHENGLADBACH</div>
+        <h1>Dein Döner.<br><span>Dein Geschmack.</span></h1>
+        <p>Frischer Döner, Dürüm, Lahmacun, Falafel, Burger, Pommes und Salate – direkt bei 01Döner in der Aachener Straße.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#speisekarte">Speisekarte ansehen</a>
+          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Aachener+Straße+297,+41061+Mönchengladbach" target="_blank" rel="noopener">📍 Route planen</a>
+          <a class="btn ghost" href="tel:+4915565579898">📞 0155 65 57 98 98</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container features">
+      <div class="feature"><div class="feature-icon">🥙</div><h3>Frisch zubereitet</h3><p>Dein Essen wird frisch für dich zubereitet.</p></div>
+      <div class="feature"><div class="feature-icon">🔥</div><h3>01Döner Geschmack</h3><p>Döner, Dürüm, Lahmacun und mehr – genau nach deinem Geschmack.</p></div>
+      <div class="feature"><div class="feature-icon">❤️</div><h3>Vor Ort bestellen</h3><p>Komm vorbei oder ruf uns direkt an.</p></div>
+    </div>
+  </section>
+
+  <section id="speisekarte">
+    <div class="container">
+      <div class="title"><small>Unsere Auswahl</small><h2>Speisekarte</h2><p>Alle Preise entsprechend der abfotografierten Speisekarte.</p></div>
+      <div class="categories" id="categories"></div>
+      <div class="menu" id="menu"></div>
+    </div>
+  </section>
+
+  <section class="dark" id="ueber-uns">
+    <div class="container about-grid">
+      <div class="about-art">🥙</div>
+      <div class="about">
+        <small>01DÖNER</small>
+        <h2>Einfach guter<br>Döner.</h2>
+        <p>Bei 01Döner bekommst du klassische Dönergerichte, Dürüm, Lahmacun, Falafel, Snacks und Salate.</p>
+        <p>Du findest uns in der Aachener Straße 297 in 41061 Mönchengladbach.</p>
+        <a class="btn" href="tel:+4915565579898">Jetzt anrufen</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="container">
+      <div class="title"><small>Besuch uns</small><h2>Kontakt & Standort</h2><p>01Döner – Aachener Straße 297, 41061 Mönchengladbach</p></div>
+      <div class="info-grid">
+        <div class="info"><h3>📍 Adresse</h3><p>Aachener Straße 297<br>41061 Mönchengladbach</p><br><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Aachener+Straße+297,+41061+Mönchengladbach" target="_blank" rel="noopener">Google Maps öffnen</a></div>
+        <div class="info"><h3>📞 Telefon</h3><p><a href="tel:+4915565579898"><strong>0155 65 57 98 98</strong></a></p><br><a class="btn" href="tel:+4915565579898">Jetzt anrufen</a></div>
+        <div class="info"><h3>🕐 Öffnungszeiten</h3><div class="hours"><div><span>Montag</span><span>11:00–22:00</span></div><div><span>Dienstag</span><span>11:00–22:00</span></div><div><span>Mittwoch</span><span>11:00–22:00</span></div><div><span>Donnerstag</span><span>11:00–22:00</span></div><div><span>Freitag</span><span>11:00–22:00</span></div><div><span>Samstag</span><span>Geschlossen</span></div><div><span>Sonntag</span><span>12:00–22:00</span></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="title"><small>Unsere Gäste</small><h2>Bewertungen</h2></div>
+      <div class="reviews">
+        <div class="review"><div class="stars">★★★★★</div><p>Sehr lecker, frische Zutaten und richtig gute Sauce. Komme gerne wieder!</p><strong>— Kunde</strong></div>
+        <div class="review"><div class="stars">★★★★★</div><p>Döner war heiß und frisch. Genau so muss es sein.</p><strong>— Kunde</strong></div>
+        <div class="review"><div class="stars">★★★★★</div><p>Freundlicher Service und gute Portionen.</p><strong>— Kunde</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Hunger? <span>Hol dir 01Döner.</span></h2>
+      <p>Wähle deinen Favoriten aus der Speisekarte oder ruf direkt an.</p>
+      <a class="btn" href="tel:+4915565579898">📞 0155 65 57 98 98</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footergrid">
+      <div><div class="logo">01<span>Döner</span></div><p style="margin-top:10px">Döner, Dürüm, Lahmacun, Falafel, Snacks & mehr.</p></div>
+      <div><h3>Navigation</h3><p><a href="#home">Startseite</a></p><p><a href="#speisekarte">Speisekarte</a></p><p><a href="#kontakt">Kontakt</a></p></div>
+      <div><h3>Rechtliches</h3><p><a href="#">Impressum</a></p><p><a href="#">Datenschutz</a></p></div>
+    </div>
+    <div class="bottom"><span>© 2026 01Döner</span><span>Aachener Straße 297 · 41061 Mönchengladbach</span></div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="drawer">
+    <div class="carthead"><h2>Deine Bestellung</h2><button class="close" id="closeCart">×</button></div>
+    <div id="cartItems"><p style="color:#aaa">Dein Warenkorb ist leer.</p></div>
+    <div class="total"><span>Gesamt</span><span id="total">0,00 €</span></div>
+    <button class="btn full" id="checkout">Bestellung abschicken</button>
+  </div>
+</div>
+
+<script>
+const products = [
+  {id:1,name:"Drehspieß Tasche – Mini",cat:"Döner",price:4.50,desc:"Mini-Drehspieß-Tasche."},
+  {id:2,name:"Drehspieß Tasche – Vegetarisch",cat:"Döner",price:6.00,desc:"Vegetarische Variante."},
+  {id:3,name:"Drehspieß Tasche – Weniger Füllung",cat:"Döner",price:6.00,desc:"Drehspieß-Tasche mit weniger Füllung."},
+  {id:4,name:"Drehspieß Tasche – Normal Döner",cat:"Döner",price:7.00,desc:"Klassischer Döner."},
+  {id:5,name:"Drehspieß Tasche – Mehr Füllung",cat:"Döner",price:9.00,desc:"Döner mit mehr Füllung."},
+  {id:6,name:"Drehspieß Tasche – Mega Döner",cat:"Döner",price:10.00,desc:"Großer Mega-Döner."},
+  {id:7,name:"Döner Teller – Klein",cat:"Teller",price:9.00,desc:"Döner-Teller, klein."},
+  {id:8,name:"Döner Teller – Normal",cat:"Teller",price:11.00,desc:"Döner-Teller, normal."},
+  {id:9,name:"Drehspieß – klein",cat:"Teller",price:7.00,desc:"Salat und Fleisch, kleine Portion."},
+  {id:10,name:"Drehspieß – normal",cat:"Teller",price:11.00,desc:"Salat und Fleisch, normale Portion."},
+  {id:11,name:"Drehspieß-Box – klein",cat:"Teller",price:7.00,desc:"Drehspieß-Box, klein."},
+  {id:12,name:"Drehspieß-Box – mittel",cat:"Teller",price:9.00,desc:"Drehspieß-Box, mittel."},
+  {id:13,name:"Drehspieß-Box – groß",cat:"Teller",price:11.00,desc:"Drehspieß-Box, groß."},
+  {id:14,name:"Lahmacun ohne Fleisch",cat:"Lahmacun",price:7.00,desc:"Lahmacun ohne Fleisch."},
+  {id:15,name:"Lahmacun mit Fleisch",cat:"Lahmacun",price:9.00,desc:"Lahmacun mit Fleisch."},
+  {id:16,name:"Lahmacun ohne Fleisch ohne Salat",cat:"Lahmacun",price:3.50,desc:"Lahmacun ohne Fleisch und ohne Salat."},
+  {id:17,name:"Dürüm",cat:"Dürüm",price:7.50,desc:"Dürüm."},
+  {id:18,name:"Bratrolle",cat:"Snacks",price:1.60,desc:"Bratrolle."},
+  {id:19,name:"Mozzarella Sticks – 6 Stück",cat:"Snacks",price:4.50,desc:"6 Mozzarella Sticks."},
+  {id:20,name:"Schnitzel",cat:"Snacks",price:8.00,desc:"Schnitzel."},
+  {id:21,name:"Currywurst",cat:"Snacks",price:7.00,desc:"Currywurst."},
+  {id:22,name:"Pommes – klein",cat:"Beilagen",price:2.20,desc:"Knusprige Pommes, klein."},
+  {id:23,name:"Pommes – mittel",cat:"Beilagen",price:2.70,desc:"Knusprige Pommes, mittel."},
+  {id:24,name:"Pommes – groß",cat:"Beilagen",price:3.70,desc:"Knusprige Pommes, groß."},
+  {id:25,name:"Pommes Spezial – klein",cat:"Beilagen",price:4.00,desc:"Mit Mayo, Ketchup und Zwiebeln."},
+  {id:26,name:"Pommes Spezial – mittel",cat:"Beilagen",price:4.50,desc:"Mit Mayo, Ketchup und Zwiebeln."},
+  {id:27,name:"Pommes Spezial – groß",cat:"Beilagen",price:5.50,desc:"Mit Mayo, Ketchup und Zwiebeln."},
+  {id:28,name:"Mayo",cat:"Saucen",price:.60,desc:"Portion Mayo."},
+  {id:29,name:"Ketchup",cat:"Saucen",price:.60,desc:"Portion Ketchup."},
+  {id:30,name:"Rote Sauce",cat:"Saucen",price:.60,desc:"Portion rote Sauce."},
+  {id:31,name:"Weiße Sauce",cat:"Saucen",price:.60,desc:"Portion weiße Sauce."},
+  {id:32,name:"Käse",cat:"Extras",price:.60,desc:"Portion Käse."},
+  {id:33,name:"Sweet Potatos – klein",cat:"Beilagen",price:3.00,desc:"Sweet Potatoes, klein."},
+  {id:34,name:"Sweet Potatos – mittel",cat:"Beilagen",price:4.50,desc:"Sweet Potatoes, mittel."},
+  {id:35,name:"Sweet Potatos – groß",cat:"Beilagen",price:5.50,desc:"Sweet Potatoes, groß."},
+  {id:36,name:"Nuggets Teller",cat:"Snacks",price:11.00,desc:"Nuggets Teller."},
+  {id:37,name:"6er Nuggets",cat:"Snacks",price:4.50,desc:"6 Nuggets."},
+  {id:38,name:"Bami",cat:"Snacks",price:1.60,desc:"Bami."},
+  {id:39,name:"Crispy Burger – 135 g",cat:"Burger",price:8.00,desc:"Crispy Burger, 135 g."},
+  {id:40,name:"Falafel Tasche",cat:"Falafel",price:7.00,desc:"Falafel Tasche."},
+  {id:41,name:"Falafel Teller",cat:"Falafel",price:11.00,desc:"Falafel Teller."},
+  {id:42,name:"Falafel Dürüm",cat:"Falafel",price:7.50,desc:"Falafel Dürüm."},
+  {id:43,name:"Kleiner Bauernsalat",cat:"Salate",price:4.50,desc:"Kleiner Bauernsalat."},
+  {id:44,name:"Großer Bauernsalat",cat:"Salate",price:7.50,desc:"Großer Bauernsalat."},
+  {id:45,name:"Kleiner Bauernsalat mit Hirtenkäse",cat:"Salate",price:5.00,desc:"Kleiner Bauernsalat mit Hirtenkäse."},
+  {id:46,name:"Großer Bauernsalat mit Hirtenkäse",cat:"Salate",price:8.50,desc:"Großer Bauernsalat mit Hirtenkäse."},
+  {id:47,name:"Krautsalat – klein",cat:"Salate",price:4.00,desc:"Krautsalat, klein."},
+  {id:48,name:"Krautsalat – groß",cat:"Salate",price:6.50,desc:"Krautsalat, groß."},
+  {id:49,name:"Kleiner gemischter Salat",cat:"Salate",price:4.00,desc:"Kleiner gemischter Salat."},
+  {id:50,name:"Großer gemischter Salat",cat:"Salate",price:6.50,desc:"Großer gemischter Salat."},
+  {id:51,name:"Portion Pepperoni",cat:"Salate",price:3.00,desc:"Portion Pepperoni."},
+  {id:52,name:"Zusätzlich Reis",cat:"Extras",price:1.00,desc:"Zusätzlich Reis zur Drehspieß-Box / zum Teller."}
+];
+
+let cart=[];
+const cats=["Alle",...new Set(products.map(p=>p.cat))];
+const categories=document.getElementById("categories");
+const menu=document.getElementById("menu");
+
+function euro(n){return n.toFixed(2).replace(".",",")+" €"}
+
+function renderCats(active="Alle"){
+  categories.innerHTML=cats.map(c=>`<button class="cat ${c===active?"active":""}" onclick="render('${c}')">${c}</button>`).join("");
+}
+function render(cat="Alle"){
+  renderCats(cat);
+  const list=cat==="Alle"?products:products.filter(p=>p.cat===cat);
+  menu.innerHTML=list.map(p=>`
+    <article class="item">
+      <div class="item-top"><h3>${p.name}</h3><span class="price">${euro(p.price)}</span></div>
+      <p>${p.desc}</p>
+      <button class="btn" onclick="add(${p.id})">+ Hinzufügen</button>
+    </article>`).join("");
+}
+function add(id){
+  const p=products.find(x=>x.id===id), existing=cart.find(x=>x.id===id);
+  existing?existing.qty++:cart.push({...p,qty:1});
+  updateCart(); document.getElementById("overlay").classList.add("open");
+}
+function removeItem(id){
+  const x=cart.find(i=>i.id===id);
+  if(!x)return;
+  x.qty>1?x.qty--:cart=cart.filter(i=>i.id!==id);
+  updateCart();
+}
+function updateCart(){
+  const n=cart.reduce((s,x)=>s+x.qty,0), total=cart.reduce((s,x)=>s+x.qty*x.price,0);
+  document.getElementById("count").textContent=n;
+  document.getElementById("total").textContent=euro(total);
+  document.getElementById("cartItems").innerHTML=cart.length?cart.map(x=>`
+    <div class="cartitem"><div><strong>${x.name}</strong><br><small>${x.qty} × ${euro(x.price)}</small></div>
+    <button class="remove" onclick="removeItem(${x.id})">Entfernen</button></div>`).join(""):`<p style="color:#aaa">Dein Warenkorb ist leer.</p>`;
+}
+document.getElementById("openCart").onclick=()=>document.getElementById("overlay").classList.add("open");
+document.getElementById("closeCart").onclick=()=>document.getElementById("overlay").classList.remove("open");
+document.getElementById("overlay").onclick=e=>{if(e.target.id==="overlay")e.currentTarget.classList.remove("open")};
+document.getElementById("checkout").onclick=()=>{
+  if(!cart.length)return alert("Dein Warenkorb ist leer.");
+  const text=cart.map(x=>`${x.qty}x ${x.name} – ${euro(x.qty*x.price)}`).join("\n");
+  const total=cart.reduce((s,x)=>s+x.qty*x.price,0);
+  alert("Bestellung:\n\n"+text+"\n\nGesamt: "+euro(total)+"\n\nBitte telefonisch unter 0155 65 57 98 98 bestellen.");
+};
+document.getElementById("toggle").onclick=()=>document.getElementById("navlinks").classList.toggle("open");
+document.querySelectorAll("#navlinks a").forEach(a=>a.onclick=()=>document.getElementById("navlinks").classList.remove("open"));
+render();
+updateCart();
+</script>
+</body>
+</html>
